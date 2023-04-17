@@ -12,7 +12,7 @@ public class UserServiceImp implements UserService {
 
     private UserDao userDao;
 
-    UserServiceImp(UserDao userDao) {
+    public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
     }
 

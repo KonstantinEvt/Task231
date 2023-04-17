@@ -23,25 +23,25 @@ public class UserController {
     }
 
     @GetMapping("/add")
-    public String addUser(ModelMap model) {
+    public String callViewToAddNewUser(ModelMap model) {
         model.addAttribute("useradd", new UserCrud());
         return "userAdd";
     }
 
     @PostMapping("/persist")
-    public String perUser(@ModelAttribute("useradd") UserCrud userCrud) {
+    public String addUser(@ModelAttribute("useradd") UserCrud userCrud) {
         userService.addUser(userCrud);
         return "redirect:/all";
     }
 
     @GetMapping("/update/{id}")
-    public String updateUser(ModelMap model, @PathVariable("id") Long id) {
+    public String callViewToUpdateUser(ModelMap model, @PathVariable("id") Long id) {
         model.addAttribute("updateUser", userService.getUser(id));
         return "userUpdate";
     }
 
     @PatchMapping("/{id}")
-    public String upUser(@ModelAttribute("updateUser") UserCrud userCrud, @PathVariable("id") Long id) {
+    public String updateUser(@ModelAttribute("updateUser") UserCrud userCrud, @PathVariable("id") Long id) {
         userService.updateUser(userCrud, id);
         return "redirect:/all";
     }

@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/add")
-    public String callViewToAddNewUser(ModelMap model) {
+    public String getViewToAddNewUser(ModelMap model) {
         model.addAttribute("useradd", new UserCrud());
         return "userAdd";
     }
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/update/{id}")
-    public String callViewToUpdateUser(ModelMap model, @PathVariable("id") Long id) {
+    public String getViewToUpdateUser(ModelMap model, @PathVariable("id") Long id) {
         model.addAttribute("updateUser", userService.getUser(id));
         return "userUpdate";
     }
